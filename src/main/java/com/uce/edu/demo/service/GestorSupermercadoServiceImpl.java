@@ -29,7 +29,7 @@ public class GestorSupermercadoServiceImpl implements IGestorSupermercadoService
 	private IDetalleVentaService detalleVentaService;
 
 	@Override
-	@Transactional
+	@Transactional(value = TxType.REQUIRED)
 	public void ingresarProducto(Producto producto) {
 		// TODO Auto-generated method stub
 		Producto prod = this.productoService.buscarCodigoBarras(producto.getCodigoBarras());
@@ -46,7 +46,7 @@ public class GestorSupermercadoServiceImpl implements IGestorSupermercadoService
 
 	
 	@Override
-	@Transactional//(value = TxType.REQUIRED)
+	@Transactional(value = TxType.REQUIRED)
 	public void realizarVenta(List<Producto> lista, Integer cantidad, String cedulaCliente, String numeroVenta) {
 		// TODO Auto-generated method stub
 
